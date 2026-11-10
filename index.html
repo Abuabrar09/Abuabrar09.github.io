@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abrar Ahmed Syed | Business & Financial Data Analyst</title>
+<meta name="description" content="Abrar Ahmed Syed, business and financial data analyst in Texas. MS in Information Technology, PhD in Artificial Intelligence in progress. I find where a business makes money and where it quietly loses it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --canvas: #f4f6f3;      /* cool paper */
+    --surface: #ffffff;
+    --ink: #16212b;         /* ledger ink */
+    --muted: #56626c;
+    --rule: #d8ddd6;
+    --profit: #1f6b53;      /* ledger green */
+    --profit-soft: #dcebe4;
+    --loss: #e2711d;        /* loss orange, as in the dashboard */
+    --focus: #1f6b53;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --canvas: #131a21; --surface: #1b242d; --ink: #e9eee9; --muted: #9eaab3;
+      --rule: #2c3741; --profit: #5cbf98; --profit-soft: #1d3a31; --loss: #f2924a; --focus: #5cbf98;
+    }
+  }
+
+  /* ---------- Base ---------- */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--body);
+         font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.08; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+
+  /* ---------- Header ---------- */
+  .site-head { padding: 26px 0; }
+  .site-head .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .name { font-family: var(--display); font-weight: 700; font-size: 20px; text-decoration: none; letter-spacing: -0.01em; }
+  .site-head nav a { text-decoration: none; color: var(--muted); font-weight: 500; margin-left: 28px; font-size: 16px; }
+  .site-head nav a:hover { color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 64px 0 88px; }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .avatar { position: relative; width: 168px; height: 168px; border-radius: 50%; overflow: hidden;
+            background: var(--profit-soft); display: grid; place-items: center;
+            box-shadow: 0 0 0 6px var(--canvas), 0 0 0 8px var(--profit); }
+  .avatar span { font-family: var(--display); font-weight: 700; font-size: 56px; color: var(--profit); }
+  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .role { margin-top: 34px; color: var(--profit); font-weight: 600; font-size: 17px; }
+  .hero h1 { font-size: clamp(44px, 7vw, 84px); margin-top: 10px; }
+  .headline { font-family: var(--display); font-weight: 500; font-size: clamp(22px, 2.6vw, 30px);
+              margin-top: 14px; letter-spacing: -0.01em; }
+  .hero .intro { margin-top: 18px; font-size: 18px; color: var(--muted); max-width: 60ch; }
+  .hero .actions { justify-content: center; }
+  .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 6px;
+         font-weight: 600; font-size: 16px; text-decoration: none; border: 1.5px solid var(--ink); }
+  .btn.solid { background: var(--ink); color: var(--canvas); }
+  .btn.line { color: var(--ink); }
+  .btn:hover { opacity: .88; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); width: min(860px, 100%);
+           margin: 64px 0 0; border-top: 1px solid var(--rule); }
+  .stats div { padding: 28px 20px 0; }
+  .stats div + div { border-left: 1px solid var(--rule); }
+  .stats dt { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 4.5vw, 50px);
+              line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .stats dd { margin: 10px auto 0; color: var(--muted); font-size: 15px; max-width: 22ch; }
+
+  /* Featured finding */
+  .finding-band { padding: 0 0 40px; }
+  .finding-band .chart { max-width: 860px; margin: 0 auto !important; }
+
+  /* The one memorable thing: a real result, drawn */
+  .chart { background: var(--surface); border-radius: 10px; padding: 28px 28px 22px; border: 1px solid var(--rule); }
+  .chart h2 { font-size: 21px; letter-spacing: -0.01em; }
+  .chart .sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  .bars { position: relative; height: 260px; margin-top: 46px; display: flex; gap: 6px; align-items: stretch; }
+  .bar { flex: 1; position: relative; }
+  .bar span { position: absolute; left: 0; right: 0; border-radius: 3px;
+              transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
+  .bar.up span { background: var(--profit); }
+  .bar.down span { background: var(--loss); transform-origin: top; }
+  .zero { position: absolute; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: .55; }
+  @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  .bar-label { position: absolute; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 38px; font-size: 14.5px; color: var(--muted); }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
+  .chart .source { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14.5px; color: var(--muted); }
+  .chart .source a { color: var(--profit); font-weight: 600; text-decoration: none; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 96px 0; }
+  .section-title { font-size: clamp(32px, 4vw, 46px); max-width: 18ch; }
+  .section-lede { margin-top: 16px; color: var(--muted); font-size: 18px; max-width: 58ch; }
+
+  /* Featured case study */
+  .case { margin-top: 56px; display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+  .case h3 { font-size: 30px; }
+  .case .tools { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
+  .case dl { margin: 32px 0 0; }
+  .case dt { font-family: var(--display); font-weight: 700; font-size: 17px; margin-top: 22px; }
+  .case dd { margin: 6px 0 0; color: var(--muted); }
+  .case dd strong { color: var(--ink); font-weight: 600; }
+  .case .actions { margin-top: 32px; }
+  .shot { border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: #fff;
+          box-shadow: 0 30px 60px -30px rgba(22, 33, 43, .35); }
+  .shot figcaption { padding: 12px 16px; font-size: 14px; color: var(--muted); background: var(--surface); border-top: 1px solid var(--rule); }
+
+  /* Other projects as a ledger of findings */
+  .ledger { margin-top: 88px; }
+  .ledger > h3 { font-size: 24px; margin-bottom: 8px; }
+  .entry { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 40px; align-items: baseline;
+           padding: 30px 0; border-top: 1px solid var(--rule); }
+  .entry:last-child { border-bottom: 1px solid var(--rule); }
+  .entry h4 { font-family: var(--display); font-size: 20px; margin: 0; letter-spacing: -0.01em; line-height: 1.2; }
+  .entry .tools { color: var(--muted); font-size: 14.5px; margin-top: 6px; }
+  .entry .finding { color: var(--muted); }
+  .entry .finding strong { color: var(--ink); font-weight: 600; }
+  .entry a.open { font-weight: 600; color: var(--profit); text-decoration: none; white-space: nowrap; font-size: 16px; }
+  .entry a.open:hover, .chart .source a:hover { text-decoration: underline; }
+
+  /* About */
+  .about { background: var(--surface); border-block: 1px solid var(--rule); }
+  .about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .about .story p { margin-top: 20px; color: var(--muted); font-size: 18px; max-width: 52ch; }
+  .edu { margin-top: 40px; }
+  .edu h3 { font-size: 18px; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .edu-item { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); max-width: 52ch; }
+  .edu-item:last-child { border-bottom: 1px solid var(--rule); }
+  .edu-item strong { font-weight: 600; }
+  .edu-item span { color: var(--muted); font-size: 15px; white-space: nowrap; }
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 40px; align-content: start; padding-top: 8px; }
+  .skills h3 { font-size: 18px; letter-spacing: -0.01em; }
+  .skills ul { list-style: none; padding: 0; margin: 10px 0 0; color: var(--muted); font-size: 16px; }
+  .skills li { padding: 3px 0; }
+
+  /* Contact */
+  .contact h2 { font-size: clamp(36px, 5vw, 60px); max-width: 16ch; }
+  .contact p { margin-top: 20px; color: var(--muted); font-size: 19px; max-width: 50ch; }
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14.5px; }
+  footer .wrap { border-top: 1px solid var(--rule); padding-top: 28px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .case, .about .wrap { grid-template-columns: 1fr; gap: 44px; }
+    .entry { grid-template-columns: 1fr; gap: 10px; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 520px) {
+    .site-head nav a { margin-left: 16px; font-size: 15px; }
+    .site-head nav a.hide-sm { display: none; }
+    .hero { padding: 28px 0 56px; }
+    .avatar { width: 128px; height: 128px; }
+    .stats { grid-template-columns: 1fr; margin-top: 44px; }
+    .stats div { padding: 22px 0 18px; }
+    .stats div + div { border-left: 0; border-top: 1px solid var(--rule); }
+    .chart { padding: 22px 18px 18px; }
+    .bars { height: 200px; gap: 4px; }
+    .skills { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .bar span { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="name" href="#">Abrar Ahmed Syed</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="avatar">
+        <span aria-hidden="true">AS</span>
+        <!-- Uses your GitHub profile photo. To use a different photo, upload profile.png to this repo and change the src to "profile.png" -->
+        <img src="https://github.com/Abuabrar09.png?size=400" alt="Abrar Ahmed Syed" onerror="this.remove()">
+      </div>
+      <p class="role">Business &amp; Financial Data Analyst</p>
+      <h1>Abrar Ahmed Syed</h1>
+      <p class="headline">Turning business data into profitable decisions</p>
+      <p class="intro">MS in Information Technology, PhD in Artificial Intelligence in progress. I analyse retail, finance and risk data with SQL, Python, Excel, Power BI and Tableau, backed by hands-on experience running a retail and grocery business.</p>
+      <div class="actions">
+        <a class="btn solid" href="#work">View projects</a>
+        <a class="btn line" href="https://public.tableau.com/views/RetailSalesProfitabilityDashboard_17942567393830/ExecutiveDashboard" target="_blank" rel="noopener">Live dashboard</a>
+        <a class="btn line" href="#contact">Contact</a>
+      </div>
+      <dl class="stats">
+        <div><dt>1.2M+</dt><dd>Transactions analysed</dd></div>
+        <div><dt>48%</dt><dd>Lower lending losses from my credit-risk model</dd></div>
+        <div><dt>2&times;</dt><dd>Operating-profit opportunity found in a retail chain</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== Featured finding ===== -->
+  <section class="finding-band">
+    <div class="wrap">
+      <figure class="chart" style="margin:0" aria-labelledby="chart-title">
+        <h2 id="chart-title">Every store looked healthy at a 25% gross margin</h2>
+        <p class="sub">Operating profit by store, 2024–2025, after rent, staff and utilities</p>
+        <div class="bars" id="bars" role="img"
+             aria-label="Bar chart of 18 stores. 13 are profitable, led by Houston Galleria at 7,468 dollars. 5 Express stores lose money, the worst being Newark Downtown at minus 4,410 dollars."></div>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--profit)"></i>13 profitable stores</span>
+          <span><i style="background:var(--loss)"></i>5 Express stores losing money</span>
+        </div>
+        <p class="source">From my retail profitability analysis. <a href="https://public.tableau.com/views/RetailSalesProfitabilityDashboard_17942567393830/ExecutiveDashboard" target="_blank" rel="noopener">Explore the dashboard</a></p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Work ===== -->
+  <section id="work" style="padding-top:24px">
+    <div class="wrap">
+      <h2 class="section-title">Analysis that ends in a decision</h2>
+      <p class="section-lede">Each project starts with a business question and finishes with a recommendation someone could act on tomorrow.</p>
+
+      <article class="case">
+        <div>
+          <h3>Retail Sales &amp; Profitability Intelligence</h3>
+          <p class="tools">SQL, Python, Excel and Tableau. 18 stores, 133,000 transactions, 2024–2025.</p>
+          <dl>
+            <dt>The question</dt>
+            <dd>Revenue was growing, but management didn't know which stores and products actually made money.</dd>
+            <dt>What I found</dt>
+            <dd>Operating profit was just <strong>0.7% of sales</strong>. All <strong>5 Express stores lose money</strong>, discounts equal <strong>47% of gross profit</strong> without lifting units sold, and <strong>13 products</strong> sell below cost.</dd>
+            <dt>What I recommended</dt>
+            <dd>Fix or close the Express stores, cap discounts at 25%, and reprice the below-cost products. The Express fix alone would <strong>more than double operating profit</strong>.</dd>
+          </dl>
+          <div class="actions">
+            <a class="btn solid" href="https://public.tableau.com/views/RetailSalesProfitabilityDashboard_17942567393830/ExecutiveDashboard" target="_blank" rel="noopener">Open the dashboard</a>
+            <a class="btn line" href="https://github.com/Abuabrar09/retail-sales-profitability-analysis" target="_blank" rel="noopener">Read the case study</a>
+          </div>
+        </div>
+        <figure class="shot" style="margin:0">
+          <img src="https://raw.githubusercontent.com/Abuabrar09/retail-sales-profitability-analysis/main/images/06_tableau_dashboard.png"
+               alt="Tableau executive dashboard with revenue, profit and margin cards, store and category charts, and a monthly trend" loading="lazy">
+          <figcaption>Interactive Tableau dashboard with region and store-format filters</figcaption>
+        </figure>
+      </article>
+
+      <div class="ledger">
+        <h3>More projects</h3>
+
+        <div class="entry">
+          <div>
+            <h4>Texas Supermarket Retail Analytics</h4>
+            <p class="tools">Python, pandas, SQL, Matplotlib</p>
+          </div>
+          <p class="finding">1.1M point-of-sale lines for a 5-store grocery chain. <strong>About 80% of promotion weeks lost gross profit</strong>, and at-risk loyalty members held 20% of member revenue.</p>
+          <a class="open" href="https://github.com/Abuabrar09/supermarket-retail-analytics" target="_blank" rel="noopener">View project</a>
+        </div>
+
+        <div class="entry">
+          <div>
+            <h4>Credit Risk Prediction</h4>
+            <p class="tools">Python, scikit-learn, Optuna</p>
+          </div>
+          <p class="finding">Random Forest model on 1,000 loan applicants, with the approval threshold set by real business costs. <strong>Catches 95% of defaulters and cuts lending losses by 48%</strong> (ROC-AUC 0.814).</p>
+          <a class="open" href="https://www.kaggle.com/abrarahmedsyed313" target="_blank" rel="noopener">View on Kaggle</a>
+        </div>
+
+        <div class="entry">
+          <div>
+            <h4>US Retail Financial Statement Analysis</h4>
+            <p class="tools">Python, pandas, yfinance, financial ratios</p>
+          </div>
+          <p class="finding">Walmart, Target and Costco compared on 10 ratios. <strong>Costco ranks first on 7 of 10 despite the lowest margins</strong>, turning inventory in 27 days against Target's 59.</p>
+          <!-- Replace this link with the project's repo -->
+          <a class="open" href="https://github.com/Abuabrar09?tab=repositories" target="_blank" rel="noopener">View project</a>
+        </div>
+
+        <div class="entry">
+          <div>
+            <h4>Indian Stock Market Analysis</h4>
+            <p class="tools">Python, pandas, risk and return metrics</p>
+          </div>
+          <p class="finding">Five years of returns and risk for five Indian banks and companies against the Nifty 50. <strong>ICICI Bank was the only one to beat the index</strong>, at 16.2% a year.</p>
+          <!-- Replace this link with the project's repo -->
+          <a class="open" href="https://github.com/Abuabrar09?tab=repositories" target="_blank" rel="noopener">View project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="story">
+        <h2 class="section-title">From running a store to reading its numbers</h2>
+        <p>Before analysing other businesses, I ran one. Managing a retail and grocery operation taught me that a busy store isn't always a profitable one, and that the answer is usually hiding in margins, markdowns and running costs.</p>
+        <p>Now I use data and AI to find those answers quickly and explain them in plain language, so the people running the business can act on them.</p>
+        <div class="edu">
+          <h3>Education</h3>
+          <div class="edu-item"><strong>PhD in Artificial Intelligence</strong><span>In progress</span></div>
+          <div class="edu-item"><strong>MS in Information Technology</strong><span>Completed</span></div>
+        </div>
+      </div>
+      <div class="skills">
+        <div>
+          <h3>Data and SQL</h3>
+          <ul><li>SQL and DuckDB</li><li>Data cleaning and validation</li><li>CTEs and window functions</li></ul>
+        </div>
+        <div>
+          <h3>Python and AI</h3>
+          <ul><li>pandas and NumPy</li><li>Matplotlib and Seaborn</li><li>scikit-learn, Random Forest, Optuna</li></ul>
+        </div>
+        <div>
+          <h3>Reporting</h3>
+          <ul><li>Tableau and Power BI</li><li>Excel: SUMIFS, XLOOKUP, pivots</li><li>Executive dashboards</li></ul>
+        </div>
+        <div>
+          <h3>Finance</h3>
+          <ul><li>P&amp;L and profitability</li><li>Financial ratio analysis</li><li>Risk and return</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Looking for a data or financial analyst?</h2>
+      <p>I'm open to Data Analyst and Financial Analyst roles. Message me on LinkedIn, or browse the code behind every project on GitHub.</p>
+      <div class="actions">
+        <a class="btn solid" href="https://www.linkedin.com/in/abrar313" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        <a class="btn line" href="https://github.com/Abuabrar09" target="_blank" rel="noopener">View my GitHub</a>
+        <a class="btn line" href="https://www.kaggle.com/abrarahmedsyed313" target="_blank" rel="noopener">View my Kaggle</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Abrar Ahmed Syed, Texas</div>
+</footer>
+
+<script>
+  // Operating profit by store, 2024–2025 (from the Retail Sales & Profitability project)
+  const stores = [
+    ["Houston Galleria", 7468], ["Dallas Uptown", 4590], ["Chicago Loop", 3806],
+    ["Philadelphia Center", 3250], ["Phoenix Camelback", 2391], ["Atlanta Midtown", 1109],
+    ["Columbus Short North", 1060], ["Austin Domain", 961], ["San Antonio Pearl", 909],
+    ["Denver LoDo", 813], ["Boston Back Bay", 728], ["Minneapolis North Loop", 431],
+    ["Seattle Capitol Hill", 405], ["New York Chelsea", -2186], ["Miami Brickell", -2327],
+    ["Los Angeles WeHo", -3481], ["Detroit Midtown", -3582], ["Newark Downtown", -4410]
+  ];
+  const box = document.getElementById("bars");
+  const max = Math.max(...stores.map(s => s[1]));
+  const min = Math.min(...stores.map(s => s[1]));
+  const range = max - min;
+  const zeroPct = (max / range) * 100;              // distance of zero line from top
+  const money = v => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US");
+
+  stores.forEach(([name, v], i) => {
+    const bar = document.createElement("div");
+    bar.className = "bar " + (v >= 0 ? "up" : "down");
+    bar.title = name + ": " + money(v);
+    const s = document.createElement("span");
+    const h = (Math.abs(v) / range) * 100;
+    if (v >= 0) { s.style.bottom = (100 - zeroPct) + "%"; s.style.height = h + "%"; }
+    else        { s.style.top = zeroPct + "%";        s.style.height = h + "%"; }
+    s.style.animationDelay = (i * 35) + "ms";
+    bar.appendChild(s);
+    box.appendChild(bar);
+  });
+
+  const zero = document.createElement("div");
+  zero.className = "zero"; zero.style.top = zeroPct + "%";
+  box.appendChild(zero);
+
+  // Label only the two extremes, so the story reads at a glance
+  const first = document.createElement("div");
+  first.className = "bar-label";
+  first.style.left = "0"; first.style.top = "-4px";
+  first.textContent = "Houston " + money(stores[0][1]);
+  first.style.transform = "translateY(-100%)";
+  box.appendChild(first);
+
+  const last = document.createElement("div");
+  last.className = "bar-label";
+  last.style.right = "0"; last.style.bottom = "-6px"; last.style.transform = "translateY(100%)";
+  last.textContent = "Newark " + money(stores[stores.length - 1][1]);
+  box.appendChild(last);
+</script>
+</body>
+</html>
