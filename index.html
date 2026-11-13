@@ -1,429 +1,652 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abrar Ahmed Syed | Business & Financial Data Analyst</title>
-<meta name="description" content="Abrar Ahmed Syed, business and financial data analyst in Texas. MS in Information Technology, PhD in Artificial Intelligence in progress. I find where a business makes money and where it quietly loses it.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abrar Ahmed Syed | Business Data, Financial & AI Analyst</title>
+<meta name="description" content="Portfolio of Abrar Ahmed Syed — Business Data, Financial & AI Analyst. SQL, Python, Power BI, Tableau and Excel projects in retail, finance and forecasting." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
 <style>
-  /* ---------- Tokens ---------- */
-  :root {
-    --canvas: #f4f6f3;      /* cool paper */
-    --surface: #ffffff;
-    --ink: #16212b;         /* ledger ink */
-    --muted: #56626c;
-    --rule: #d8ddd6;
-    --profit: #1f6b53;      /* ledger green */
-    --profit-soft: #dcebe4;
-    --loss: #e2711d;        /* loss orange, as in the dashboard */
-    --focus: #1f6b53;
-    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  :root{
+    --indigo:#4f46e5; --indigo-d:#3730a3; --indigo-l:#eef2ff;
+    --ink:#0f172a; --body:#334155; --muted:#64748b; --line:#e2e8f0;
+    --bg:#ffffff; --bg-soft:#f8fafc; --green:#059669; --amber:#d97706;
+    --radius:16px; --shadow:0 1px 2px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --canvas: #131a21; --surface: #1b242d; --ink: #e9eee9; --muted: #9eaab3;
-      --rule: #2c3741; --profit: #5cbf98; --profit-soft: #1d3a31; --loss: #f2924a; --focus: #5cbf98;
-    }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+  .eyebrow{font:500 12px/1 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);margin-bottom:14px}
+  h1,h2,h3{color:var(--ink);line-height:1.15;letter-spacing:-.02em}
+  h2{font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:16px}
+  .lead{font-size:18px;color:var(--muted);max-width:640px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;color:var(--ink);font-size:18px;display:flex;align-items:center;gap:10px}
+  .logo span{width:34px;height:34px;border-radius:10px;background:var(--indigo);color:#fff;display:grid;place-items:center;font-size:14px}
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--indigo)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;transition:all .2s;border:1px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--indigo);color:#fff}
+  .btn-primary:hover{background:var(--indigo-d);transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
+  .btn-ghost:hover{border-color:var(--indigo);color:var(--indigo)}
+  .btn-sm{padding:8px 16px;font-size:14px}
+  .menu-btn{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+  /* HERO */
+  .hero{padding:88px 0 72px;background:radial-gradient(900px 400px at 85% -10%,#e0e7ff 0,transparent 60%),radial-gradient(600px 300px at 0% 100%,#f0fdf4 0,transparent 60%)}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:500;margin-bottom:24px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #d1fae5}
+  .hero h1{font-size:clamp(38px,5.5vw,60px);font-weight:800;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--indigo)}
+  .hero .lead{margin-bottom:32px}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .socials{display:flex;gap:10px;margin-top:28px}
+  .socials a{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;background:#fff;color:var(--muted);transition:all .2s}
+  .socials a:hover{color:var(--indigo);border-color:var(--indigo);transform:translateY(-2px)}
+  .socials svg{width:18px;height:18px}
+
+  /* hero dashboard card */
+  .dash{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px rgba(79,70,229,.12);padding:22px}
+  .dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .dash-head b{color:var(--ink);font-size:14px}
+  .dash-head small{font:500 11px 'JetBrains Mono',monospace;color:var(--muted)}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+  .kpi{background:var(--bg-soft);border-radius:12px;padding:12px}
+  .kpi small{font-size:11px;color:var(--muted);display:block}
+  .kpi b{font-size:20px;color:var(--ink)}
+  .kpi i{font-style:normal;font-size:11px;font-weight:600;color:var(--green)}
+  .bars{display:flex;align-items:flex-end;gap:8px;height:110px;padding-top:8px;border-bottom:1px solid var(--line)}
+  .bars div{flex:1;background:linear-gradient(180deg,#818cf8,var(--indigo));border-radius:6px 6px 0 0;transform-origin:bottom;animation:grow 1s ease-out both}
+  .bars div:nth-child(odd){opacity:.75}
+  @keyframes grow{from{transform:scaleY(0)}}
+  .dash-foot{display:flex;justify-content:space-between;font:500 10px 'JetBrains Mono',monospace;color:var(--muted);margin-top:6px}
+
+  /* STATS */
+  .stats{padding:0 0 24px}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}
+  .stat{padding:28px 24px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-size:34px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+  .stat span{font-size:14px;color:var(--muted)}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .about p{margin-bottom:16px}
+  .focus{display:grid;gap:14px}
+  .focus-item{display:flex;gap:16px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+  .focus-item .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--indigo-l);color:var(--indigo);display:grid;place-items:center;font-size:20px}
+  .focus-item h3{font-size:16px;margin-bottom:4px}
+  .focus-item p{font-size:14px;color:var(--muted);margin:0}
+
+  /* SKILLS */
+  .skills{background:var(--bg-soft)}
+  .skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+  .skill-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .skill-card h3{font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:12.5px;font-weight:500;padding:5px 10px;border-radius:8px;background:var(--bg-soft);border:1px solid var(--line);color:var(--body)}
+
+  /* PROJECTS */
+  .proj-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .filter{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font:500 14px Inter,sans-serif;color:var(--muted);cursor:pointer;transition:all .2s}
+  .filter:hover{border-color:var(--indigo);color:var(--indigo)}
+  .filter.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .proj{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:all .25s;cursor:pointer}
+  .proj:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,23,42,.1);border-color:#c7d2fe}
+  .proj-top{height:132px;position:relative;padding:18px;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
+  .proj-top .cat{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+  .proj-top .emoji{font-size:34px;line-height:1}
+  .proj-top .status{position:absolute;top:16px;right:16px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.22);backdrop-filter:blur(4px)}
+  .proj-body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .proj-body h3{font-size:17px;margin-bottom:8px}
+  .proj-body p{font-size:14px;color:var(--muted);margin-bottom:16px;flex:1}
+  .proj-body .chips{margin-bottom:16px}
+  .proj-links{display:flex;gap:16px;font-size:14px;font-weight:600;color:var(--indigo);border-top:1px solid var(--line);padding-top:14px}
+  .proj-links a:hover{text-decoration:underline}
+  .hidden{display:none!important}
+  .proj-body p b,.modal-content b,.feat b{color:var(--ink)}
+  .metric{display:inline-block;font:600 12px Inter,sans-serif;color:var(--indigo);background:var(--indigo-l);padding:4px 10px;border-radius:999px;margin-bottom:12px}
+
+  /* FEATURED */
+  .feat{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center;padding:40px;border:1px solid var(--line);border-radius:24px;background:var(--bg-soft);margin-bottom:56px}
+  .feat .tag{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--indigo);padding:5px 10px;border-radius:6px;display:inline-block;margin-bottom:16px}
+  .feat h3{font-size:30px;font-weight:800;margin-bottom:8px}
+  .feat .meta{color:var(--muted);margin-bottom:22px}
+  .feat h4{font-size:15px;color:var(--ink);margin:18px 0 6px}
+  .feat p{font-size:15.5px}
+  .feat .hero-ctas{margin-top:26px}
+  .feat figure{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .feat figure img{display:block;width:100%;height:auto}
+  .feat figcaption{padding:12px 16px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+  @media (max-width:960px){.feat{grid-template-columns:1fr;padding:24px}}
+
+  /* MODAL */
+  .modal{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:20px;max-width:640px;width:100%;max-height:88vh;overflow:auto;animation:pop .25s ease-out}
+  @keyframes pop{from{transform:translateY(16px);opacity:0}}
+  .modal-box .proj-top{height:150px}
+  .modal-content{padding:28px}
+  .modal-content h3{font-size:24px;margin-bottom:10px}
+  .modal-content h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);margin:22px 0 10px}
+  .modal-content ul{padding-left:20px}
+  .modal-content li{margin-bottom:6px}
+  .close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:20px;cursor:pointer;color:var(--ink)}
+
+  /* JOURNEY */
+  .journey{background:var(--bg-soft)}
+  .tl{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .tl-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;gap:18px}
+  .tl-card .ic{flex:none;width:48px;height:48px;border-radius:14px;background:var(--indigo-l);color:var(--indigo);display:grid;place-items:center;font-size:22px}
+  .tl-card small{font:500 12px 'JetBrains Mono',monospace;color:var(--indigo)}
+  .tl-card h3{font-size:17px;margin:4px 0 6px}
+  .tl-card p{font-size:14px;color:var(--muted)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:#fef3c7;color:var(--amber);margin-left:6px;vertical-align:middle}
+  .pill.done{background:#d1fae5;color:var(--green)}
+
+  /* CONTACT */
+  .contact-box{background:linear-gradient(135deg,var(--indigo) 0%,#312e81 100%);border-radius:28px;padding:56px;color:#e0e7ff;display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative;overflow:hidden}
+  .contact-box::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06);right:-120px;top:-160px}
+  .contact-box h2{color:#fff}
+  .contact-box .eyebrow{color:#a5b4fc}
+  .contact-list{margin-top:28px;display:grid;gap:12px}
+  .contact-list a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.08);transition:background .2s;font-size:15px}
+  .contact-list a:hover{background:rgba(255,255,255,.16)}
+  .contact-list svg{width:18px;height:18px;flex:none}
+  form{background:#fff;border-radius:20px;padding:28px;position:relative;z-index:1;display:grid;gap:14px}
+  label{font-size:13px;font-weight:600;color:var(--ink);display:grid;gap:6px}
+  input,textarea{font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;color:var(--ink);outline:none;transition:border .2s}
+  input:focus,textarea:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-l)}
+  textarea{resize:vertical;min-height:110px}
+  form .btn{justify-content:center}
+
+
+  /* EXPERIENCE TIMELINE */
+  .xp{margin-top:40px;position:relative;padding-left:32px}
+  .xp::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--indigo),#c7d2fe)}
+  .xp-item{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;margin-bottom:18px}
+  .xp-item::before{content:"";position:absolute;left:-29px;top:28px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--indigo)}
+  .xp-item.now::before{background:var(--indigo);box-shadow:0 0 0 5px var(--indigo-l)}
+  .xp-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+  .xp-item h3{font-size:18px}
+  .xp-co{color:var(--indigo);font-weight:600;font-size:15px}
+  .xp-date{font:500 12px 'JetBrains Mono',monospace;color:var(--muted);white-space:nowrap}
+  .xp-wins{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+  .xp-wins span{font-size:12.5px;font-weight:600;color:var(--green);background:#ecfdf5;border-radius:999px;padding:4px 10px}
+  .xp-item ul{margin-top:12px;padding-left:18px;font-size:14.5px}
+  .xp-item li{margin-bottom:5px}
+  .xp-more{background:none;border:0;color:var(--indigo);font:600 14px Inter,sans-serif;cursor:pointer;margin-top:6px;padding:0}
+  .xp-item .extra{display:none}
+  .xp-item.open .extra{display:list-item}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:960px){
+    .hero-grid,.about-grid,.contact-box,.tl{grid-template-columns:1fr}
+    .proj-grid{grid-template-columns:repeat(2,1fr)}
+    .skill-grid{grid-template-columns:repeat(2,1fr)}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .contact-box{padding:36px}
   }
-
-  /* ---------- Base ---------- */
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--body);
-         font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
-  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
-  h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.08; margin: 0; letter-spacing: -0.02em; }
-  p { margin: 0; }
-
-  /* ---------- Header ---------- */
-  .site-head { padding: 26px 0; }
-  .site-head .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-  .name { font-family: var(--display); font-weight: 700; font-size: 20px; text-decoration: none; letter-spacing: -0.01em; }
-  .site-head nav a { text-decoration: none; color: var(--muted); font-weight: 500; margin-left: 28px; font-size: 16px; }
-  .site-head nav a:hover { color: var(--ink); }
-
-  /* ---------- Hero ---------- */
-  .hero { padding: 64px 0 88px; }
-  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .avatar { position: relative; width: 168px; height: 168px; border-radius: 50%; overflow: hidden;
-            background: var(--profit-soft); display: grid; place-items: center;
-            box-shadow: 0 0 0 6px var(--canvas), 0 0 0 8px var(--profit); }
-  .avatar span { font-family: var(--display); font-weight: 700; font-size: 56px; color: var(--profit); }
-  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .role { margin-top: 34px; color: var(--profit); font-weight: 600; font-size: 17px; }
-  .hero h1 { font-size: clamp(44px, 7vw, 84px); margin-top: 10px; }
-  .headline { font-family: var(--display); font-weight: 500; font-size: clamp(22px, 2.6vw, 30px);
-              margin-top: 14px; letter-spacing: -0.01em; }
-  .hero .intro { margin-top: 18px; font-size: 18px; color: var(--muted); max-width: 60ch; }
-  .hero .actions { justify-content: center; }
-  .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .btn { display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 6px;
-         font-weight: 600; font-size: 16px; text-decoration: none; border: 1.5px solid var(--ink); }
-  .btn.solid { background: var(--ink); color: var(--canvas); }
-  .btn.line { color: var(--ink); }
-  .btn:hover { opacity: .88; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); width: min(860px, 100%);
-           margin: 64px 0 0; border-top: 1px solid var(--rule); }
-  .stats div { padding: 28px 20px 0; }
-  .stats div + div { border-left: 1px solid var(--rule); }
-  .stats dt { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 4.5vw, 50px);
-              line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-  .stats dd { margin: 10px auto 0; color: var(--muted); font-size: 15px; max-width: 22ch; }
-
-  /* Featured finding */
-  .finding-band { padding: 0 0 40px; }
-  .finding-band .chart { max-width: 860px; margin: 0 auto !important; }
-
-  /* The one memorable thing: a real result, drawn */
-  .chart { background: var(--surface); border-radius: 10px; padding: 28px 28px 22px; border: 1px solid var(--rule); }
-  .chart h2 { font-size: 21px; letter-spacing: -0.01em; }
-  .chart .sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
-  .bars { position: relative; height: 260px; margin-top: 46px; display: flex; gap: 6px; align-items: stretch; }
-  .bar { flex: 1; position: relative; }
-  .bar span { position: absolute; left: 0; right: 0; border-radius: 3px;
-              transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
-  .bar.up span { background: var(--profit); }
-  .bar.down span { background: var(--loss); transform-origin: top; }
-  .zero { position: absolute; left: 0; right: 0; height: 1.5px; background: var(--ink); opacity: .55; }
-  @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-  .bar-label { position: absolute; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
-  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 38px; font-size: 14.5px; color: var(--muted); }
-  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
-  .chart .source { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 14.5px; color: var(--muted); }
-  .chart .source a { color: var(--profit); font-weight: 600; text-decoration: none; }
-
-  /* ---------- Sections ---------- */
-  section { padding: 96px 0; }
-  .section-title { font-size: clamp(32px, 4vw, 46px); max-width: 18ch; }
-  .section-lede { margin-top: 16px; color: var(--muted); font-size: 18px; max-width: 58ch; }
-
-  /* Featured case study */
-  .case { margin-top: 56px; display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
-  .case h3 { font-size: 30px; }
-  .case .tools { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
-  .case dl { margin: 32px 0 0; }
-  .case dt { font-family: var(--display); font-weight: 700; font-size: 17px; margin-top: 22px; }
-  .case dd { margin: 6px 0 0; color: var(--muted); }
-  .case dd strong { color: var(--ink); font-weight: 600; }
-  .case .actions { margin-top: 32px; }
-  .shot { border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: #fff;
-          box-shadow: 0 30px 60px -30px rgba(22, 33, 43, .35); }
-  .shot figcaption { padding: 12px 16px; font-size: 14px; color: var(--muted); background: var(--surface); border-top: 1px solid var(--rule); }
-
-  /* Other projects as a ledger of findings */
-  .ledger { margin-top: 88px; }
-  .ledger > h3 { font-size: 24px; margin-bottom: 8px; }
-  .entry { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 40px; align-items: baseline;
-           padding: 30px 0; border-top: 1px solid var(--rule); }
-  .entry:last-child { border-bottom: 1px solid var(--rule); }
-  .entry h4 { font-family: var(--display); font-size: 20px; margin: 0; letter-spacing: -0.01em; line-height: 1.2; }
-  .entry .tools { color: var(--muted); font-size: 14.5px; margin-top: 6px; }
-  .entry .finding { color: var(--muted); }
-  .entry .finding strong { color: var(--ink); font-weight: 600; }
-  .entry a.open { font-weight: 600; color: var(--profit); text-decoration: none; white-space: nowrap; font-size: 16px; }
-  .entry a.open:hover, .chart .source a:hover { text-decoration: underline; }
-
-  /* About */
-  .about { background: var(--surface); border-block: 1px solid var(--rule); }
-  .about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
-  .about .story p { margin-top: 20px; color: var(--muted); font-size: 18px; max-width: 52ch; }
-  .edu { margin-top: 40px; }
-  .edu h3 { font-size: 18px; letter-spacing: -0.01em; margin-bottom: 6px; }
-  .edu-item { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); max-width: 52ch; }
-  .edu-item:last-child { border-bottom: 1px solid var(--rule); }
-  .edu-item strong { font-weight: 600; }
-  .edu-item span { color: var(--muted); font-size: 15px; white-space: nowrap; }
-  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 40px; align-content: start; padding-top: 8px; }
-  .skills h3 { font-size: 18px; letter-spacing: -0.01em; }
-  .skills ul { list-style: none; padding: 0; margin: 10px 0 0; color: var(--muted); font-size: 16px; }
-  .skills li { padding: 3px 0; }
-
-  /* Contact */
-  .contact h2 { font-size: clamp(36px, 5vw, 60px); max-width: 16ch; }
-  .contact p { margin-top: 20px; color: var(--muted); font-size: 19px; max-width: 50ch; }
-  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14.5px; }
-  footer .wrap { border-top: 1px solid var(--rule); padding-top: 28px; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 900px) {
-    .case, .about .wrap { grid-template-columns: 1fr; gap: 44px; }
-    .entry { grid-template-columns: 1fr; gap: 10px; }
-    section { padding: 72px 0; }
-  }
-  @media (max-width: 520px) {
-    .site-head nav a { margin-left: 16px; font-size: 15px; }
-    .site-head nav a.hide-sm { display: none; }
-    .hero { padding: 28px 0 56px; }
-    .avatar { width: 128px; height: 128px; }
-    .stats { grid-template-columns: 1fr; margin-top: 44px; }
-    .stats div { padding: 22px 0 18px; }
-    .stats div + div { border-left: 0; border-top: 1px solid var(--rule); }
-    .chart { padding: 22px 18px 18px; }
-    .bars { height: 200px; gap: 4px; }
-    .skills { grid-template-columns: 1fr; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .bar span { animation: none; }
+  @media (max-width:720px){
+    .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;border-bottom:1px solid var(--line);gap:16px}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+    nav .btn{display:none}
+    .proj-grid,.skill-grid{grid-template-columns:1fr}
+    section{padding:72px 0}
   }
 </style>
 </head>
 <body>
 
-<header class="site-head">
+<!-- ============ NAV ============ -->
+<nav>
   <div class="wrap">
-    <a class="name" href="#">Abrar Ahmed Syed</a>
-    <nav aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#about" class="hide-sm">About</a>
+    <a href="#" class="logo"><span>AS</span>Abrar Ahmed Syed</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Experience</a>
       <a href="#contact">Contact</a>
-    </nav>
+    </div>
+    <a href="#contact" class="btn btn-primary btn-sm">Hire me</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="dot"></span>Open to Analyst roles · Texas, USA</div>
+      <h1>Business Data, <em>Financial &amp; AI</em> Analyst</h1>
+      <p class="lead">I turn raw retail, sales and market data into clear dashboards, forecasts and decisions using SQL, Python, Power BI, Tableau and Excel. Today I work as a Business Data / Financial &amp; AI Analyst for a retail supermarket chain, with 5+ years of analytics experience across finance, BI and retail.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary">View my projects →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="socials" id="heroSocials"></div>
+    </div>
+
+    <div class="dash" aria-hidden="true">
+      <div class="dash-head"><b>Portfolio overview</b><small>LIVE · 2026</small></div>
+      <div class="kpis">
+        <div class="kpi"><small>Projects</small><b id="kpiProjects">0</b> <i>▲ growing</i></div>
+        <div class="kpi"><small>Core tools</small><b>6+</b> <i>SQL · BI · Py</i></div>
+        <div class="kpi"><small>Rows analyzed</small><b>2M+</b> <i>real datasets</i></div>
+        <div class="kpi"><small>Focus</small><b>AI</b> <i>PhD in progress</i></div>
+      </div>
+      <div class="bars">
+        <div style="height:38%"></div><div style="height:52%;animation-delay:.05s"></div><div style="height:45%;animation-delay:.1s"></div><div style="height:66%;animation-delay:.15s"></div><div style="height:58%;animation-delay:.2s"></div><div style="height:78%;animation-delay:.25s"></div><div style="height:72%;animation-delay:.3s"></div><div style="height:94%;animation-delay:.35s"></div>
+      </div>
+      <div class="dash-foot"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+    </div>
   </div>
 </header>
 
-<main>
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="avatar">
-        <span aria-hidden="true">AS</span>
-        <!-- Uses your GitHub profile photo. To use a different photo, upload profile.png to this repo and change the src to "profile.png" -->
-        <img src="https://github.com/Abuabrar09.png?size=400" alt="Abrar Ahmed Syed" onerror="this.remove()">
-      </div>
-      <p class="role">Business &amp; Financial Data Analyst</p>
-      <h1>Abrar Ahmed Syed</h1>
-      <p class="headline">Turning business data into profitable decisions</p>
-      <p class="intro">MS in Information Technology, PhD in Artificial Intelligence in progress. I analyse retail, finance and risk data with SQL, Python, Excel, Power BI and Tableau, backed by hands-on experience running a retail and grocery business.</p>
-      <div class="actions">
-        <a class="btn solid" href="#work">View projects</a>
-        <a class="btn line" href="https://public.tableau.com/views/RetailSalesProfitabilityDashboard_17942567393830/ExecutiveDashboard" target="_blank" rel="noopener">Live dashboard</a>
-        <a class="btn line" href="#contact">Contact</a>
-      </div>
-      <dl class="stats">
-        <div><dt>3.5M+</dt><dd>Transactions analysed</dd></div>
-        <div><dt>48%</dt><dd>Lower lending losses from my credit-risk model</dd></div>
-        <div><dt>2&times;</dt><dd>Operating-profit opportunity found in a retail chain</dd></div>
-      </dl>
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid reveal">
+      <div class="stat"><b id="statProjects">0</b><span>Portfolio projects</span></div>
+      <div class="stat"><b>MS</b><span>Information Technology</span></div>
+      <div class="stat"><b>PhD</b><span>Artificial Intelligence (in progress)</span></div>
+      <div class="stat"><b>5+</b><span>Years of analytics experience</span></div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ===== Featured finding ===== -->
-  <section class="finding-band">
-    <div class="wrap">
-      <figure class="chart" style="margin:0" aria-labelledby="chart-title">
-        <h2 id="chart-title">Every store looked healthy at a 25% gross margin</h2>
-        <p class="sub">Operating profit by store, 2024–2025, after rent, staff and utilities</p>
-        <div class="bars" id="bars" role="img"
-             aria-label="Bar chart of 18 stores. 13 are profitable, led by Houston Galleria at 7,468 dollars. 5 Express stores lose money, the worst being Newark Downtown at minus 4,410 dollars."></div>
-        <div class="legend" aria-hidden="true">
-          <span><i style="background:var(--profit)"></i>13 profitable stores</span>
-          <span><i style="background:var(--loss)"></i>5 Express stores losing money</span>
-        </div>
-        <p class="source">From my retail profitability analysis. <a href="https://public.tableau.com/views/RetailSalesProfitabilityDashboard_17942567393830/ExecutiveDashboard" target="_blank" rel="noopener">Explore the dashboard</a></p>
-      </figure>
+<!-- ============ ABOUT ============ -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">About me</div>
+      <h2>Data skills backed by real business experience</h2>
+      <p>I'm Abrar Ahmed Syed, an analyst focused on <b>business, financial and retail data</b>. I hold an MS in Information Technology and am pursuing a PhD in Artificial Intelligence.</p>
+      <p>I currently work as a <b>Business Data / Financial &amp; AI Analyst</b> for a chain of retail supermarkets. Before that I built dashboards, reporting and forecasting models at Morgan Stanley, Novozymes (now Novonesis) and Precision Informatic. Working in retail taught me that sales, margin, inventory and expenses only matter when they lead to a decision.</p>
     </div>
-  </section>
+    <div class="focus reveal">
+      <div class="focus-item"><div class="ic">📊</div><div><h3>Business Intelligence</h3><p>KPI dashboards in Power BI &amp; Tableau with DAX measures and drill-downs.</p></div></div>
+      <div class="focus-item"><div class="ic">💰</div><div><h3>Financial Analysis</h3><p>Financial statement ratios, stock risk and return, profitability and margin analysis.</p></div></div>
+      <div class="focus-item"><div class="ic">🛒</div><div><h3>Retail Analytics</h3><p>Sales, customer, product and inventory analysis for a multi-store supermarket chain.</p></div></div>
+      <div class="focus-item"><div class="ic">🤖</div><div><h3>AI &amp; Forecasting</h3><p>Seasonal demand forecasting and cost-aware ML models like credit-risk scoring.</p></div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== Work ===== -->
-  <section id="work" style="padding-top:24px">
-    <div class="wrap">
-      <h2 class="section-title">Analysis that ends in a decision</h2>
-      <p class="section-lede">Each project starts with a business question and finishes with a recommendation someone could act on tomorrow.</p>
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="skills">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Toolkit</div>
+      <h2>Skills &amp; tools</h2>
+      <p class="lead">The stack I use from raw data to the final story.</p>
+    </div>
+    <div class="skill-grid" id="skillGrid"></div>
+  </div>
+</section>
 
-      <article class="case">
-        <div>
-          <h3>Retail Sales &amp; Profitability Intelligence</h3>
-          <p class="tools">SQL, Python, Excel and Tableau. 18 stores, 133,000 transactions, 2024–2025.</p>
-          <dl>
-            <dt>The question</dt>
-            <dd>Revenue was growing, but management didn't know which stores and products actually made money.</dd>
-            <dt>What I found</dt>
-            <dd>Operating profit was just <strong>0.7% of sales</strong>. All <strong>5 Express stores lose money</strong>, discounts equal <strong>47% of gross profit</strong> without lifting units sold, and <strong>13 products</strong> sell below cost.</dd>
-            <dt>What I recommended</dt>
-            <dd>Fix or close the Express stores, cap discounts at 25%, and reprice the below-cost products. The Express fix alone would <strong>more than double operating profit</strong>.</dd>
-          </dl>
-          <div class="actions">
-            <a class="btn solid" href="https://public.tableau.com/views/RetailSalesProfitabilityDashboard_17942567393830/ExecutiveDashboard" target="_blank" rel="noopener">Open the dashboard</a>
-            <a class="btn line" href="https://github.com/Abuabrar09/retail-sales-profitability-analysis" target="_blank" rel="noopener">Read the case study</a>
-          </div>
-        </div>
-        <figure class="shot" style="margin:0">
-          <img src="https://raw.githubusercontent.com/Abuabrar09/retail-sales-profitability-analysis/main/images/06_tableau_dashboard.png"
-               alt="Tableau executive dashboard with revenue, profit and margin cards, store and category charts, and a monthly trend" loading="lazy">
-          <figcaption>Interactive Tableau dashboard with region and store-format filters</figcaption>
-        </figure>
-      </article>
-
-      <div class="ledger">
-        <h3>More projects</h3>
-
-                <div class="entry">
-          <div>
-            <h4>Executive Business Performance &amp; KPI Intelligence</h4>
-            <p class="tools">SQL, Python, Power BI, DAX</p>
-          </div>
-          <p class="finding">One Power BI view of sales, finance and operations for a Brazilian marketplace (99K orders, 3,000 sellers). <strong>Late deliveries made bad reviews 6.6&times; more likely</strong>, only 3% of customers returned, and the top 10% of sellers drove 67% of revenue.</p>
-          <a class="open" href="https://github.com/Abuabrar09/Executive-KPI-Intelligence" target="_blank" rel="noopener">View project</a>
-        </div>
-                <div class="entry">
-          <div>
-            <h4>Inventory Optimization &amp; Demand Forecasting</h4>
-            <p class="tools">SQL, Python, Tableau</p>
-          </div>
-          <p class="finding">Demand forecasting and stock policy for 10 stores and 50 items, using 913K Kaggle sales records. <strong>A seasonal model forecast with 2.2% error</strong>, and the analysis found $6.0M of stock in 8 overstocked items while 10 high-value items were about to run out.</p>
-          <div style="display:flex; flex-direction:column; gap:6px">
-            <a class="open" href="https://public.tableau.com/app/profile/abrar.ahmed.syed4247/viz/InventoryOptimizationDemandForecasting/InventoryDashboard" target="_blank" rel="noopener">View dashboard</a>
-            <a class="open" href="https://github.com/Abuabrar09/Inventory-Optimization-Forecasting" target="_blank" rel="noopener">View code</a>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div>
-            <h4>Texas Supermarket Retail Analytics</h4>
-            <p class="tools">Python, pandas, SQL, Matplotlib</p>
-          </div>
-          <p class="finding">1.1M point-of-sale lines for a 5-store grocery chain. <strong>About 80% of promotion weeks lost gross profit</strong>, and at-risk loyalty members held 20% of member revenue.</p>
-          <a class="open" href="https://github.com/Abuabrar09/supermarket-retail-analytics" target="_blank" rel="noopener">View project</a>
-        </div>
-
-        <div class="entry">
-          <div>
-            <h4>Credit Risk Prediction</h4>
-            <p class="tools">Python, scikit-learn, Optuna</p>
-          </div>
-          <p class="finding">Random Forest model on 1,000 loan applicants, with the approval threshold set by real business costs. <strong>Catches 95% of defaulters and cuts lending losses by 48%</strong> (ROC-AUC 0.814).</p>
-          <a class="open" href="https://www.kaggle.com/abrarahmedsyed313" target="_blank" rel="noopener">View on Kaggle</a>
-        </div>
-
-        <div class="entry">
-          <div>
-            <h4>US Retail Financial Statement Analysis</h4>
-            <p class="tools">Python, pandas, yfinance, financial ratios</p>
-          </div>
-          <p class="finding">Walmart, Target and Costco compared on 10 ratios. <strong>Costco ranks first on 7 of 10 despite the lowest margins</strong>, turning inventory in 27 days against Target's 59.</p>
-          <!-- Replace this link with the project's repo -->
-          <a class="open" href="https://github.com/Abuabrar09?tab=repositories" target="_blank" rel="noopener">View project</a>
-        </div>
-
-        <div class="entry">
-          <div>
-            <h4>Indian Stock Market Analysis</h4>
-            <p class="tools">Python, pandas, risk and return metrics</p>
-          </div>
-          <p class="finding">Five years of returns and risk for five Indian banks and companies against the Nifty 50. <strong>ICICI Bank was the only one to beat the index</strong>, at 16.2% a year.</p>
-          <!-- Replace this link with the project's repo -->
-          <a class="open" href="https://github.com/Abuabrar09?tab=repositories" target="_blank" rel="noopener">View project</a>
-        </div>
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div>
+        <div class="eyebrow">Portfolio</div>
+        <h2>Analysis that ends in a decision</h2>
+        <p class="lead">Each project starts with a business question and finishes with a recommendation someone could act on tomorrow.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ===== About ===== -->
-  <section id="about" class="about">
-    <div class="wrap">
-      <div class="story">
-        <h2 class="section-title">From running a store to reading its numbers</h2>
-        <p>Before analysing other businesses, I ran one. Managing a retail and grocery operation taught me that a busy store isn't always a profitable one, and that the answer is usually hiding in margins, markdowns and running costs.</p>
-        <p>Now I use data and AI to find those answers quickly and explain them in plain language, so the people running the business can act on them.</p>
-        <div class="edu">
-          <h3>Education</h3>
-          <div class="edu-item"><strong>PhD in Artificial Intelligence</strong><span>In progress</span></div>
-          <div class="edu-item"><strong>MS in Information Technology</strong><span>Completed</span></div>
-        </div>
-      </div>
-      <div class="skills">
-        <div>
-          <h3>Data and SQL</h3>
-          <ul><li>SQL and DuckDB</li><li>Data cleaning and validation</li><li>CTEs and window functions</li></ul>
-        </div>
-        <div>
-          <h3>Python and AI</h3>
-          <ul><li>pandas and NumPy</li><li>Matplotlib and Seaborn</li><li>scikit-learn, Random Forest, Optuna</li></ul>
-        </div>
-        <div>
-          <h3>Reporting</h3>
-          <ul><li>Tableau and Power BI</li><li>Excel: SUMIFS, XLOOKUP, pivots</li><li>Executive dashboards</li></ul>
-        </div>
-        <div>
-          <h3>Finance</h3>
-          <ul><li>P&amp;L and profitability</li><li>Financial ratio analysis</li><li>Risk and return</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="feat reveal" id="featured"></div>
 
-  <!-- ===== Contact ===== -->
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2>Looking for a data or financial analyst?</h2>
-      <p>I'm open to Data Analyst and Financial Analyst roles. Message me on LinkedIn, or browse the code behind every project on GitHub.</p>
-      <div class="actions">
-        <a class="btn solid" href="https://www.linkedin.com/in/abrar313" target="_blank" rel="noopener">Message me on LinkedIn</a>
-        <a class="btn line" href="https://github.com/Abuabrar09" target="_blank" rel="noopener">View my GitHub</a>
-        <a class="btn line" href="https://www.kaggle.com/abrarahmedsyed313" target="_blank" rel="noopener">View my Kaggle</a>
-      </div>
+    <div class="proj-head reveal">
+      <h3 style="font-size:24px">More projects</h3>
+      <div class="filters" id="filters"></div>
     </div>
-  </section>
-</main>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION / EXPERIENCE ============ -->
+<section id="journey" class="journey">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Journey</div>
+      <h2>Experience</h2>
+      <p class="lead">5+ years building dashboards, reporting and models for finance, BI and retail teams.</p>
+    </div>
+    <div class="xp" id="xpList"></div>
+
+    <div class="reveal" style="margin-top:72px">
+      <div class="eyebrow">Education</div>
+      <h2>Education</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-card reveal"><div class="ic">🎓</div><div><small>Doctorate</small><h3>PhD, Artificial Intelligence <span class="pill">In progress</span></h3><p>Research and coursework in machine learning and applied AI.</p></div></div>
+      <div class="tl-card reveal"><div class="ic">🎓</div><div><small>Master's</small><h3>MS, Information Technology <span class="pill done">Completed</span></h3><p>Foundations in databases, systems, programming and data management.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div style="position:relative;z-index:1">
+        <div class="eyebrow">Contact</div>
+        <h2>Let's work together</h2>
+        <p>Hiring for an analyst role, or want to talk about data? Send me a message and I'll get back to you.</p>
+        <div class="contact-list" id="contactList"></div>
+      </div>
+      <form id="contactForm">
+        <label>Your name<input name="name" required placeholder="Jane Recruiter" /></label>
+        <label>Your email<input name="email" type="email" required placeholder="jane@company.com" /></label>
+        <label>Message<textarea name="message" required placeholder="Hi Abrar, I'd like to talk about a Data Analyst role…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send message →</button>
+      </form>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <div class="wrap">© 2026 Abrar Ahmed Syed, Texas</div>
+  <div class="wrap">
+    <span>© <span id="year"></span> Abrar Ahmed Syed</span>
+    <span>Built with HTML, CSS &amp; JavaScript · Hosted on GitHub Pages</span>
+  </div>
 </footer>
 
+<!-- ============ PROJECT MODAL ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box" style="position:relative">
+    <button class="close" id="modalClose" aria-label="Close">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
 <script>
-  // Operating profit by store, 2024–2025 (from the Retail Sales & Profitability project)
-  const stores = [
-    ["Houston Galleria", 7468], ["Dallas Uptown", 4590], ["Chicago Loop", 3806],
-    ["Philadelphia Center", 3250], ["Phoenix Camelback", 2391], ["Atlanta Midtown", 1109],
-    ["Columbus Short North", 1060], ["Austin Domain", 961], ["San Antonio Pearl", 909],
-    ["Denver LoDo", 813], ["Boston Back Bay", 728], ["Minneapolis North Loop", 431],
-    ["Seattle Capitol Hill", 405], ["New York Chelsea", -2186], ["Miami Brickell", -2327],
-    ["Los Angeles WeHo", -3481], ["Detroit Midtown", -3582], ["Newark Downtown", -4410]
-  ];
-  const box = document.getElementById("bars");
-  const max = Math.max(...stores.map(s => s[1]));
-  const min = Math.min(...stores.map(s => s[1]));
-  const range = max - min;
-  const zeroPct = (max / range) * 100;              // distance of zero line from top
-  const money = v => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US");
+/* =====================================================================
+   EDIT YOUR INFO HERE. Everything on the page is built from this data.
+   To add a project, copy one { ... } block in PROJECTS and change it.
+   ===================================================================== */
+const PROFILE = {
+  email:    "abrar.s2309@gmail.com",
+  linkedin: "https://www.linkedin.com/in/abrar313",
+  github:   "https://github.com/Abuabrar09",
+  kaggle:   "https://www.kaggle.com/abrarahmedsyed313",
+  tableau:  "https://public.tableau.com/app/profile/abrar.ahmed.syed4247",
+};
 
-  stores.forEach(([name, v], i) => {
-    const bar = document.createElement("div");
-    bar.className = "bar " + (v >= 0 ? "up" : "down");
-    bar.title = name + ": " + money(v);
-    const s = document.createElement("span");
-    const h = (Math.abs(v) / range) * 100;
-    if (v >= 0) { s.style.bottom = (100 - zeroPct) + "%"; s.style.height = h + "%"; }
-    else        { s.style.top = zeroPct + "%";        s.style.height = h + "%"; }
-    s.style.animationDelay = (i * 35) + "ms";
-    bar.appendChild(s);
-    box.appendChild(bar);
-  });
+const SKILLS = [
+  { icon:"🗄️", title:"Data & Querying",   items:["SQL","PostgreSQL","SQL Server","Joins & CTEs","Window functions","Data modeling"] },
+  { icon:"🐍", title:"Python & ML",       items:["Python","R","Pandas","NumPy","scikit-learn","A/B testing","Regression","Random Forest","Optuna","yfinance","Matplotlib"] },
+  { icon:"📊", title:"BI & Visualization", items:["Power BI","DAX","Tableau","Excel","Excel VBA","SSRS","Google Analytics"] },
+  { icon:"💼", title:"Business & Finance", items:["KPI design","Profitability analysis","Forecasting","Customer segmentation","Data governance","Stakeholder management","UAT & QA"] },
+];
 
-  const zero = document.createElement("div");
-  zero.className = "zero"; zero.style.top = zeroPct + "%";
-  box.appendChild(zero);
+// FEATURED = the big case study at the top of the Projects section.
+// Wrap words in **double stars** to make them bold.
+const FEATURED = {
+  title:"Retail Sales & Profitability Intelligence",
+  meta:"SQL, Python, Excel and Tableau. 18 stores, 133,000 transactions, 2024–2025.",
+  question:"Revenue was growing, but management didn't know which stores and products actually made money.",
+  found:"Operating profit was just **0.7% of sales**. All **5 Express stores lose money**, discounts equal **47% of gross profit** without lifting units sold, and **13 products** sell below cost.",
+  recommended:"Fix or close the Express stores, cap discounts at 25%, and reprice the below-cost products. The Express fix alone would **more than double operating profit**.",
+  image:"dashboard-retail.png",
+  caption:"Interactive Tableau dashboard with region and store-format filters",
+  dashboard:"https://public.tableau.com/app/profile/abrar.ahmed.syed4247",   // <-- paste the exact dashboard link
+  caseStudy:"https://github.com/Abuabrar09",                                   // <-- paste the repo link
+};
 
-  // Label only the two extremes, so the story reads at a glance
-  const first = document.createElement("div");
-  first.className = "bar-label";
-  first.style.left = "0"; first.style.top = "-4px";
-  first.textContent = "Houston " + money(stores[0][1]);
-  first.style.transform = "translateY(-100%)";
-  box.appendChild(first);
+// MORE PROJECTS. links: [label, url] pairs. Leave a url "" to hide it.
+const PROJECTS = [
+  {
+    title:"Executive Business Performance & KPI Intelligence",
+    category:"Business Intelligence", emoji:"📈", gradient:["#0ea5e9","#4f46e5"],
+    metric:"Late deliveries → 6.6× more bad reviews",
+    summary:"One Power BI view of sales, finance and operations for a Brazilian marketplace (99K orders, 3,000 sellers).",
+    found:"**Late deliveries made bad reviews 6.6× more likely**, only 3% of customers returned, and the top 10% of sellers drove 67% of revenue.",
+    tools:["SQL","Python","Power BI","DAX"],
+    links:[["View project","https://github.com/Abuabrar09"]]
+  },
+  {
+    title:"Inventory Optimization & Demand Forecasting",
+    category:"AI & Forecasting", emoji:"📦", gradient:["#059669","#0d9488"],
+    metric:"2.2% forecast error",
+    summary:"Demand forecasting and stock policy for 10 stores and 50 items, using 913K Kaggle sales records.",
+    found:"**A seasonal model forecast with 2.2% error**, and the analysis found $6.0M of stock in 8 overstocked items while 10 high-value items were about to run out.",
+    tools:["SQL","Python","Tableau"],
+    links:[["View dashboard","https://public.tableau.com/app/profile/abrar.ahmed.syed4247"],["View code","https://github.com/Abuabrar09"]]
+  },
+  {
+    title:"Texas Supermarket Retail Analytics",
+    category:"Retail Analytics", emoji:"🛒", gradient:["#f59e0b","#ef4444"],
+    metric:"80% of promo weeks lost profit",
+    summary:"1.1M point-of-sale lines for a 5-store grocery chain.",
+    found:"**About 80% of promotion weeks lost gross profit**, and at-risk loyalty members held 20% of member revenue.",
+    tools:["Python","pandas","SQL","Matplotlib"],
+    links:[["View project","https://github.com/Abuabrar09/supermarket-retail-analytics"]]
+  },
+  {
+    title:"Credit Risk Prediction",
+    category:"AI & Forecasting", emoji:"🏦", gradient:["#7c3aed","#c026d3"],
+    metric:"Lending losses cut 48%",
+    summary:"Random Forest model on 1,000 loan applicants, with the approval threshold set by real business costs.",
+    found:"**Catches 95% of defaulters and cuts lending losses by 48%** (ROC-AUC 0.814).",
+    tools:["Python","scikit-learn","Optuna"],
+    links:[["View on Kaggle","https://www.kaggle.com/abrarahmedsyed313"]]
+  },
+  {
+    title:"US Retail Financial Statement Analysis",
+    category:"Financial Analysis", emoji:"💵", gradient:["#1e293b","#475569"],
+    metric:"Costco #1 on 7 of 10 ratios",
+    summary:"Walmart, Target and Costco compared on 10 financial ratios.",
+    found:"**Costco ranks first on 7 of 10 despite the lowest margins**, turning inventory in 27 days against Target's 59.",
+    tools:["Python","pandas","yfinance","Financial ratios"],
+    links:[["View project","https://github.com/Abuabrar09"]]
+  },
+  {
+    title:"Indian Stock Market Analysis",
+    category:"Financial Analysis", emoji:"📉", gradient:["#ea580c","#16a34a"],
+    metric:"ICICI Bank: 16.2% a year",
+    summary:"Five years of returns and risk for five Indian banks and companies against the Nifty 50.",
+    found:"**ICICI Bank was the only one to beat the index**, at 16.2% a year.",
+    tools:["Python","pandas","Risk & return metrics"],
+    links:[["View project","https://github.com/Abuabrar09"]]
+  },
+];
 
-  const last = document.createElement("div");
-  last.className = "bar-label";
-  last.style.right = "0"; last.style.bottom = "-6px"; last.style.transform = "translateY(100%)";
-  last.textContent = "Newark " + money(stores[stores.length - 1][1]);
-  box.appendChild(last);
+// EXPERIENCE (newest first). wins = short highlight badges. First 3 bullets show; the rest open with "Show more".
+const EXPERIENCE = [
+  { role:"Business Data / Financial & AI Analyst", company:"Retail Supermarket Chain", place:"Texas", dates:"2025 – Present", now:true,
+    wins:[], bullets:[
+      "Analyze sales, margin, inventory and expense data across a chain of retail supermarkets.",
+      "Build dashboards and financial reports that help management make pricing, purchasing and store decisions.",
+      "Apply Python and AI/ML techniques to forecasting and business performance questions." ] },
+  { role:"Senior Business Data Analyst", company:"Morgan Stanley", place:"Dallas, TX", dates:"Dec 2023 – Jan 2025",
+    wins:["+25% operational efficiency","+15% customer acquisition","−30% report time","~12 hrs/week saved"], bullets:[
+      "Built Tableau and Power BI dashboards for the Business Analyst team tracking marketing KPIs, including campaign performance and customer acquisition; improved operational efficiency by 25%.",
+      "Ran A/B tests and regression analysis in Python and R to compare marketing approaches, contributing to a 15% improvement in customer acquisition.",
+      "Wrote complex SQL queries across PostgreSQL and SQL Server for recurring reports, cutting report generation time by 30%.",
+      "Automated financial and sales reports with Excel VBA and SSRS, saving about 12 hours of manual work per week.",
+      "Gathered reporting requirements from business stakeholders and trained users on new dashboards after launch.",
+      "Coordinated reporting projects from request to delivery, tracking timelines and keeping stakeholders updated." ] },
+  { role:"Data Analyst, BI Platform", company:"Novozymes (now Novonesis)", place:"Arizona", dates:"Nov 2022 – Dec 2023",
+    wins:["BI scopes for SVP approval","Data governance","BI budget & vendors"], bullets:[
+      "Gathered requirements from stakeholders and subject matter experts across departments to build yearly BI project scopes for SVP approval.",
+      "Built proof-of-concept KPI models with department heads, including data mining, testing and validation.",
+      "Reviewed dashboards with SMEs, made changes from their feedback, and ran QA and UAT before each release.",
+      "Helped data management teams set data governance policies for data quality, security and privacy.",
+      "Trained users and worked with the Director of Performance Management Systems to grow BI adoption across operating locations.",
+      "Managed the BI service catalog and vendors, tracked platform costs for the annual BI budget, and wrote SOPs and process flows." ] },
+  { role:"Business Data Analyst", company:"Precision Informatic M Private Limited", place:"India", dates:"Apr 2018 – Jul 2021",
+    wins:["+20% customer retention","+10% forecast accuracy","+12% marketing ROI","−40% manual cleanup"], bullets:[
+      "Joined as a part-time intern in April 2018 and moved to full-time after six months.",
+      "Analyzed customer data to find trends and patterns, contributing to a 20% increase in customer retention.",
+      "Built machine learning models for sales forecasting that improved forecast accuracy by 10%.",
+      "Created customer segmentation models with the marketing team, increasing targeted marketing ROI by 12%.",
+      "Wrote complex SQL queries on large datasets to support marketing campaigns, improving campaign efficiency by 15%.",
+      "Automated data cleaning with Python, cutting manual cleanup by 40%.",
+      "Built a Power BI dashboard giving the business real-time visibility into key KPIs, and tracked website performance in Google Analytics." ] },
+];
+/* ===================================================================== */
+
+const ICONS = {
+  linkedin:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>',
+  github:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>',
+  kaggle:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.83 23.84c-.02.1-.12.16-.3.16h-3.12c-.19 0-.35-.08-.48-.25l-5.16-6.57-1.44 1.37v5.1c0 .23-.12.35-.35.35H5.57c-.23 0-.35-.12-.35-.35V.35c0-.23.12-.35.35-.35h2.41c.23 0 .35.12.35.35v14.4l6.17-6.24c.13-.13.28-.2.46-.2h3.21c.14 0 .23.06.27.17.04.13.03.22-.04.3l-6.53 6.32 6.81 8.48c.1.1.12.2.06.3z"/></svg>',
+  tableau:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.3 0h1.4v3.4h3v1.3h-3v3.4h-1.4V4.7h-3V3.4h3V0zM5 6.6h1.2v3H9v1.1H6.2v3H5v-3H2.1V9.6H5v-3zm12.8 0H19v3h2.9v1.1H19v3h-1.2v-3H15V9.6h2.8v-3zM10.9 9h2.2v4.4h4.4v2.2h-4.4V20h-2.2v-4.4H6.5v-2.2h4.4V9zM5 17h1.2v3H9v1H6.2v3H5v-3H2.1v-1H5v-3zm12.8 0H19v3h2.9v1H19v3h-1.2v-3H15v-1h2.8v-3z"/></svg>',
+  email:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>',
+};
+const LABELS = { email:"Email me", linkedin:"LinkedIn", github:"GitHub", kaggle:"Kaggle", tableau:"Tableau Public" };
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const href = k => k === "email" ? "mailto:" + PROFILE.email : PROFILE[k];
+
+// socials + contact list
+const order = ["linkedin","github","kaggle","tableau","email"];
+$("#heroSocials").innerHTML = order.map(k =>
+  `<a href="${href(k)}" ${k!=="email"?'target="_blank" rel="noopener"':''} aria-label="${LABELS[k]}" title="${LABELS[k]}">${ICONS[k]}</a>`).join("");
+$("#contactList").innerHTML = ["email","linkedin","github","kaggle","tableau"].map(k =>
+  `<a href="${href(k)}" ${k!=="email"?'target="_blank" rel="noopener"':''}>${ICONS[k]}<span>${k==="email"?esc(PROFILE.email):LABELS[k]}</span></a>`).join("");
+
+// skills
+$("#skillGrid").innerHTML = SKILLS.map(s => `
+  <div class="skill-card reveal"><h3>${s.icon} ${esc(s.title)}</h3>
+  <div class="chips">${s.items.map(i => `<span class="chip">${esc(i)}</span>`).join("")}</div></div>`).join("");
+
+const md = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+const ext = 'target="_blank" rel="noopener"';
+
+// stats
+const total = PROJECTS.length + 1;
+$("#statProjects").textContent = total;
+$("#kpiProjects").textContent = total;
+
+// featured
+const F = FEATURED;
+$("#featured").innerHTML = `
+  <div>
+    <span class="tag">Featured case study</span>
+    <h3>${esc(F.title)}</h3>
+    <p class="meta">${esc(F.meta)}</p>
+    <h4>The question</h4><p>${md(F.question)}</p>
+    <h4>What I found</h4><p>${md(F.found)}</p>
+    <h4>What I recommended</h4><p>${md(F.recommended)}</p>
+    <div class="hero-ctas">
+      ${F.dashboard ? `<a class="btn btn-primary" href="${F.dashboard}" ${ext}>Open the dashboard</a>` : ""}
+      ${F.caseStudy ? `<a class="btn btn-ghost" href="${F.caseStudy}" ${ext}>Read the case study</a>` : ""}
+    </div>
+  </div>
+  <figure>
+    <a href="${F.dashboard || "#"}" ${ext}><img src="${F.image}" alt="${esc(F.title)} dashboard"></a>
+    <figcaption>${esc(F.caption)}</figcaption>
+  </figure>`;
+
+// project cards
+const header = p => `
+  <div class="proj-top" style="background:linear-gradient(135deg,${p.gradient[0]},${p.gradient[1]})">
+    <span class="emoji">${p.emoji}</span><span class="cat">${esc(p.category)}</span>
+  </div>`;
+const links = p => p.links.filter(l => l[1]).map(([t,u]) =>
+  `<a href="${u}" ${ext} onclick="event.stopPropagation()">${esc(t)} ↗</a>`).join("");
+
+$("#projGrid").innerHTML = PROJECTS.map((p, i) => `
+  <article class="proj reveal" data-cat="${esc(p.category)}" data-i="${i}" tabindex="0">
+    ${header(p)}
+    <div class="proj-body">
+      <span class="metric">${esc(p.metric)}</span>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.summary)}</p>
+      <div class="chips">${p.tools.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+      <div class="proj-links"><span>Details →</span>${links(p)}</div>
+    </div>
+  </article>`).join("");
+
+// filters
+const cats = ["All", ...new Set(PROJECTS.map(p => p.category))];
+$("#filters").innerHTML = cats.map((c, i) => `<button class="filter${i? "":" active"}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+$("#filters").addEventListener("click", e => {
+  const b = e.target.closest(".filter"); if (!b) return;
+  document.querySelectorAll(".filter").forEach(x => x.classList.toggle("active", x === b));
+  document.querySelectorAll(".proj").forEach(card =>
+    card.classList.toggle("hidden", b.dataset.c !== "All" && card.dataset.cat !== b.dataset.c));
+});
+
+// modal
+const modal = $("#modal");
+function openProject(i){
+  const p = PROJECTS[i];
+  $("#modalBody").innerHTML = header(p) + `
+    <div class="modal-content">
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.summary)}</p>
+      <h4>What I found</h4><p>${md(p.found)}</p>
+      <h4>Tools</h4><div class="chips">${p.tools.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+      <div class="proj-links" style="margin-top:22px">${links(p)}</div>
+    </div>`;
+  modal.classList.add("open"); document.body.style.overflow = "hidden";
+}
+function closeModal(){ modal.classList.remove("open"); document.body.style.overflow = ""; }
+$("#projGrid").addEventListener("click", e => { const c = e.target.closest(".proj"); if (c) openProject(c.dataset.i); });
+$("#projGrid").addEventListener("keydown", e => { const c = e.target.closest(".proj"); if (c && e.key === "Enter") openProject(c.dataset.i); });
+$("#modalClose").onclick = closeModal;
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+// experience
+$("#xpList").innerHTML = EXPERIENCE.map(x => `
+  <div class="xp-item reveal${x.now ? " now" : ""}">
+    <div class="xp-top"><h3>${esc(x.role)}</h3><span class="xp-date">${esc(x.dates)}</span></div>
+    <div class="xp-co">${esc(x.company)} <span style="color:var(--muted);font-weight:500">· ${esc(x.place)}</span></div>
+    ${x.wins.length ? `<div class="xp-wins">${x.wins.map(w => `<span>${esc(w)}</span>`).join("")}</div>` : ""}
+    <ul>${x.bullets.map((b, i) => `<li class="${i > 2 ? "extra" : ""}">${esc(b)}</li>`).join("")}</ul>
+    ${x.bullets.length > 3 ? `<button class="xp-more">Show more ▾</button>` : ""}
+  </div>`).join("");
+$("#xpList").addEventListener("click", e => {
+  const b = e.target.closest(".xp-more"); if (!b) return;
+  const item = b.closest(".xp-item"); item.classList.toggle("open");
+  b.textContent = item.classList.contains("open") ? "Show less ▴" : "Show more ▾";
+});
+
+// contact form: opens the visitor's email app with the message filled in (works on GitHub Pages, no server needed)
+$("#contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const subject = encodeURIComponent("Portfolio inquiry from " + f.get("name"));
+  const body = encodeURIComponent(f.get("message") + "\n\n— " + f.get("name") + " (" + f.get("email") + ")");
+  window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
+});
+
+// mobile menu
+$("#menuBtn").onclick = () => $("#navLinks").classList.toggle("open");
+document.querySelectorAll("#navLinks a").forEach(a => a.onclick = () => $("#navLinks").classList.remove("open"));
+
+// scroll reveal
+const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold:.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+$("#year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
